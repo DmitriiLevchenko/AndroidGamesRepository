@@ -8,35 +8,34 @@
 
     <ImageView
         android:id="@+id/jump"
-        android:layout_width="143dp"
-        android:layout_height="197dp"
+        android:layout_width="150dp"
+        android:layout_height="186dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="188dp"
+        android:layout_marginBottom="96dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/games_1" />
 
     <ImageView
         android:id="@+id/evade"
-        android:layout_width="143dp"
-        android:layout_height="197dp"
-        android:layout_marginTop="280dp"
+        android:layout_width="205dp"
+        android:layout_height="195dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/games_2" />
 
     <ImageView
         android:id="@+id/limbo"
-        android:layout_width="143dp"
-        android:layout_height="197dp"
-        android:layout_marginBottom="180dp"
+        android:layout_width="154dp"
+        android:layout_height="198dp"
+        android:layout_marginBottom="84dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.977"
+        app:layout_constraintHorizontal_bias="0.887"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/games_3" />
 
