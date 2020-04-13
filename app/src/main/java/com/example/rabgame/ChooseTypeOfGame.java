@@ -30,7 +30,7 @@ private ImageView jump,evade,limbo;
                     case R.id.jump:
                         CreateEvadeIntent(); break;
                     case R.id.evade:
-                        CreateShopIntent(); break;
+                        CreateEvadeIntent(); break;
                     case R.id.limbo:
                         CreateExitIntent();break;
                 }

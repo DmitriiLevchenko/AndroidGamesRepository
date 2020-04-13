@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EvadingGame"></activity>
+        <activity android:name=".JumpGame"></activity>
+        <activity
+            android:name=".EvadingGame"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Shop"
             android:screenOrientation="landscape" />

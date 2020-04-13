@@ -8,8 +8,8 @@ import java.util.Random;
 
 public class Сoconut extends JungleBody {
     private int radius = 2; // радиус
-    private float minSpeed = (float) 0.1; // минимальная скорость
-    private float maxSpeed = (float) 0.5; // максимальная скорость
+    private float minSpeed = (float) 0.7; // минимальная скорость
+    private float maxSpeed = (float) 0.9; // максимальная скорость
     public Сoconut(Context context) {
         Random random = new Random();
 

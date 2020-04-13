@@ -12,7 +12,7 @@ public class Crab extends JungleBody {
         size = 5;
         x=7;
         y= GameViewEvading.maxY - size - 1;
-        speed = (float) 0.2;
+        speed = (float) 1;
 
         init(context); // инициализируем корабль
     }
