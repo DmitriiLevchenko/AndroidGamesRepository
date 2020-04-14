@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
         shop.setOnClickListener(CreatesetOnclickListener());
         rule.setOnClickListener(CreatesetOnclickListener());
         exit.setOnClickListener(CreatesetOnclickListener());
+
+        final SQLiteDatabase db = new DBHelper(this).getWritableDatabase();
+        Cursor cursor = db.query("GameUser", null, null, null,
+                null, null, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            cursor.moveToFirst();
+        }
     }
 
     public View.OnClickListener CreatesetOnclickListener()
