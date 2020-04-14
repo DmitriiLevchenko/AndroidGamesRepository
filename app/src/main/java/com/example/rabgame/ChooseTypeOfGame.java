@@ -20,6 +20,7 @@ private ImageView jump,evade,limbo;
         evade.setOnClickListener(CreatesetOnclickListener());
         limbo.setOnClickListener(CreatesetOnclickListener());
     }
+
     public View.OnClickListener CreatesetOnclickListener()
     {
         View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -28,28 +29,30 @@ private ImageView jump,evade,limbo;
                 switch (v.getId())
                 {
                     case R.id.jump:
-                        CreateEvadeIntent(); break;
+                        CreateJumpIntent(); break;
                     case R.id.evade:
                         CreateEvadeIntent(); break;
                     case R.id.limbo:
-                        CreateExitIntent();break;
+                        CreateLimboIntent();break;
                 }
             }
         };
         return onClickListener;
     }
+
+
     void CreateEvadeIntent()
     {
         Intent intent = new Intent(ChooseTypeOfGame.this,EvadingGame.class);
         startActivity(intent);
     }
-    void CreateExitIntent()
+    void CreateJumpIntent()
     {
-        this.finish();
-    }
-    void CreateShopIntent()
-    {
-        Intent intent = new Intent(ChooseTypeOfGame.this,Shop.class);
+        Intent intent = new Intent(ChooseTypeOfGame.this,JumpGame.class);
         startActivity(intent);
+    }
+    void CreateLimboIntent()
+    {
+
     }
 }

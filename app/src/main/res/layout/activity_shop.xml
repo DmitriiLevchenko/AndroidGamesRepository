@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".Shop"
     android:orientation="horizontal"
-    android:screenOrientation="portrait" >
+    android:screenOrientation="portrait"
+    android:background="@drawable/rules">
 
     <ImageView
         android:id="@+id/crab_2"
         android:layout_width="138dp"
         android:layout_height="83dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="188dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +23,7 @@
         android:id="@+id/crab_3"
         android:layout_width="138dp"
         android:layout_height="83dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="188dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/crab_2"
@@ -32,7 +33,7 @@
         android:id="@+id/crab_4"
         android:layout_width="138dp"
         android:layout_height="83dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="24dp"
         android:layout_marginBottom="188dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/crab_3"
@@ -42,18 +43,18 @@
         android:id="@+id/crab_5"
         android:layout_width="138dp"
         android:layout_height="83dp"
-        android:layout_marginStart="32dp"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="188dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/crab_4"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.426"
         app:srcCompat="@drawable/crab_5" />
 
     <ImageView
         android:id="@+id/shopprices_1"
         android:layout_width="108dp"
         android:layout_height="41dp"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="32dp"
         android:layout_marginBottom="124dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +64,7 @@
         android:id="@+id/shopprices_2"
         android:layout_width="108dp"
         android:layout_height="41dp"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="40dp"
         android:layout_marginBottom="124dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/shopprices_1"
@@ -73,7 +74,7 @@
         android:id="@+id/shopprices_3"
         android:layout_width="108dp"
         android:layout_height="41dp"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="52dp"
         android:layout_marginBottom="124dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/shopprices_2"
@@ -83,9 +84,30 @@
         android:id="@+id/shopprices_4"
         android:layout_width="108dp"
         android:layout_height="41dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="44dp"
         android:layout_marginBottom="124dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/shopprices_3"
         app:srcCompat="@drawable/shopprices_4" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="92dp"
+        android:layout_height="86dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="292dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/moneycount" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="56dp"
+        android:text="TextView"
+        android:textSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

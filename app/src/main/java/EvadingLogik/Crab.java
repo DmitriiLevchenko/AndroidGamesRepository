@@ -9,10 +9,10 @@ import com.example.rabgame.R;
 public class Crab extends JungleBody {
     public Crab(Context context) {
         bitmapId = R.drawable.crab_1; // определяем начальные параметры
-        size = 5;
-        x=7;
+        size = 4;
+        x=5;
         y= GameViewEvading.maxY - size - 1;
-        speed = (float) 1;
+        speed = (float) 1.2;
 
         init(context); // инициализируем корабль
     }

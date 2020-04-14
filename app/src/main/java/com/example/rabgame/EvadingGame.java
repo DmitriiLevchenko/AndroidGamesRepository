@@ -18,23 +18,23 @@ public class EvadingGame  extends AppCompatActivity implements View.OnTouchListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evading_game);
-        GameViewEvading gameView = new GameViewEvading(this); // создаём gameView
+        GameViewEvading gameView = new GameViewEvading(this);
 
-        LinearLayout gameLayout = (LinearLayout) findViewById(R.id.gameLayout); // находим gameLayout
+        LinearLayout gameLayout = (LinearLayout) findViewById(R.id.gameLayout);
         gameLayout.addView(gameView); // и добавляем в него gameView
 
-        ImageView leftButton = (ImageView) findViewById(R.id.left); // находим кнопки
+        ImageView leftButton = (ImageView) findViewById(R.id.left);
         ImageView rightButton = (ImageView) findViewById(R.id.right);
 
-        leftButton.setOnTouchListener(this); // и добавляем этот класс как слушателя (при нажатии сработает onTouch)
+        leftButton.setOnTouchListener(this);
         rightButton.setOnTouchListener(this);
     }
 
     @Override
     public boolean onTouch(View button, MotionEvent motion) {
-        switch(button.getId()) { // определяем какая кнопка
+        switch(button.getId()) {
             case R.id.left:
-                switch (motion.getAction()) { // определяем нажата или отпущена
+                switch (motion.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         isLeftPressed = true;
                         break;
@@ -44,7 +44,7 @@ public class EvadingGame  extends AppCompatActivity implements View.OnTouchListe
                 }
                 break;
             case R.id.right:
-                switch (motion.getAction()) { // определяем нажата или отпущена
+                switch (motion.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         isRightPressed = true;
                         break;

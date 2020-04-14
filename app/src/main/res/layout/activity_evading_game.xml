@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/gameLayout"
         android:layout_width="match_parent"
-        android:layout_height="334dp"
+        android:layout_height="371dp"
         android:layout_weight="100"
         android:background="@color/colorPrimary"
         android:orientation="vertical" />
