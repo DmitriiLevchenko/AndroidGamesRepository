@@ -53,6 +53,7 @@ private ImageView jump,evade,limbo;
     }
     void CreateLimboIntent()
     {
-
+        Intent intent = new Intent(ChooseTypeOfGame.this,LimboGame.class);
+        startActivity(intent);
     }
 }

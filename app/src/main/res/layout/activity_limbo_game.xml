@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".JumpGame"
+    tools:context=".LimboGame"
     android:background="@drawable/background_hor">
 
     <ProgressBar
-        android:id="@+id/progressjumpBar"
+        android:id="@+id/progresslimbBar3"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="36dp"
         android:layout_height="235dp"
@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageView11"
         android:layout_width="253dp"
         android:layout_height="73dp"
         android:layout_marginStart="56dp"
@@ -32,21 +32,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/crab_1" />
 
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="170dp"
+        android:layout_height="194dp"
+        android:layout_marginStart="432dp"
+        android:layout_marginBottom="216dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/moneycount_box" />
+
     <Button
-        android:id="@+id/jumpButton"
+        android:id="@+id/limb"
         android:layout_width="153dp"
         android:layout_height="50dp"
         android:layout_marginStart="344dp"
         android:layout_marginBottom="4dp"
         android:background="@drawable/button"
-        android:textStyle="bold"
+        android:text="Limb"
         android:textSize="18dp"
-        android:text="Jump"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/gameStatus"
+        android:id="@+id/qcoins3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="468dp"
+        android:layout_marginBottom="288dp"
+        android:text="0"
+        android:textSize="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/gameStatus3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="316dp"
@@ -60,34 +81,20 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="170dp"
-        android:layout_height="194dp"
-        android:layout_marginStart="432dp"
-        android:layout_marginBottom="216dp"
+        android:id="@+id/imageView13"
+        android:layout_width="363dp"
+        android:layout_height="242dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/moneycount_box" />
+        app:srcCompat="@drawable/limbo" />
 
     <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="85dp"
-        android:layout_height="229dp"
-        android:layout_marginStart="516dp"
-        android:layout_marginBottom="196dp"
+        android:id="@+id/imageView14"
+        android:layout_width="89dp"
+        android:layout_height="154dp"
+        android:layout_marginStart="496dp"
+        android:layout_marginBottom="236dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/moneycount" />
-
-    <TextView
-        android:id="@+id/Qcoins"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="468dp"
-        android:layout_marginBottom="288dp"
-        android:text="0"
-        android:textSize="36dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

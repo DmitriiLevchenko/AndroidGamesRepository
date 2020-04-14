@@ -39,22 +39,24 @@ public class JumpGame extends AppCompatActivity {
                     while(Jump == false)
                     {
                         try {
-                            sleep(20);
+                            sleep(10);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                         runOnUiThread(new Runnable() {
-
                             @Override
                             public void run() {
-                                SetprogressBar(progressBar);
-                                drawProgreesBar(mintarget,maxtarget,progressBar);
+                                if(!GameOver)
+                                {
+                                    SetprogressBar(progressBar);
+                                    drawProgreesBar(mintarget,maxtarget,progressBar);
+                                }
                             }
                         });
 
                     }
                     try {
-                        sleep(200);
+                        sleep(100);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -76,12 +78,23 @@ public class JumpGame extends AppCompatActivity {
                 switch (v.getId())
                 {
                     case R.id.jumpButton:
-                        Jump(); break;
+                        if(!GameOver)
+                        {
+                            Jump(); break;
+                        }
+                        else
+                        {
 
+                            Restart();
+                        }
                 }
             }
         };
         return onClickListener;
+    }
+    void Restart()
+    {
+        this.recreate();
     }
     void Jump()
     {
@@ -92,8 +105,12 @@ public class JumpGame extends AppCompatActivity {
             Jump = true;
         }
         else
-        {   GameOver = true;
-            status.setText("Game over,click on button to start");
+        {
+            button.setText("Restart");
+            Jump = true;
+            GameOver = true;
+            status.setText("Game over");
+            status.setVisibility((int)0.9);
         }
     }
     void SetprogressBar(ProgressBar progressBar)
