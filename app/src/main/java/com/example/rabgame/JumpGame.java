@@ -28,6 +28,7 @@ public class JumpGame extends AppCompatActivity {
         button.setOnClickListener(CreatesetOnclickListener());
         progressBar = findViewById(R.id.progressjumpBar);
         Qcoins = findViewById(R.id.Qcoins);
+        Qcoins.setText(CustUser.coins + "");
         status = findViewById(R.id.gameStatus);
 
         Thread myThready = new Thread(new Runnable()
@@ -94,6 +95,7 @@ public class JumpGame extends AppCompatActivity {
     }
     void Restart()
     {
+        CustUser.coins = Integer. parseInt(Qcoins.getText().toString());
         this.recreate();
     }
     void Jump()

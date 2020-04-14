@@ -2,6 +2,7 @@ package com.example.rabgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -34,7 +35,10 @@ public class MainActivity extends AppCompatActivity {
                 null, null, null);
         if (cursor != null && cursor.moveToFirst()) {
             cursor.moveToFirst();
+            CustUser.skin = cursor.getString(cursor.getColumnIndex("activeskin"));
+            CustUser.coins = cursor.getInt(cursor.getColumnIndex("coins"));
         }
+
     }
 
     public View.OnClickListener CreatesetOnclickListener()
@@ -70,5 +74,17 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent intent = new Intent(MainActivity.this,Shop.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ContentValues cv = new ContentValues();
+        cv.put("coins", CustUser.coins);
+        cv.put("activeskin", CustUser.skin+"");
+        final SQLiteDatabase db2 = new DBHelper(this).getWritableDatabase();
+        int cursor = db2.update("GameUser", cv, null,
+                null);
+        db2.close();
     }
 }

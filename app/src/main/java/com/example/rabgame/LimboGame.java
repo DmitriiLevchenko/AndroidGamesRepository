@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ public class LimboGame extends AppCompatActivity {
     private TextView Qcoins, status;
     private Boolean Jump = false;
     private Button button;
+    ImageView crab;
     private Boolean GameOver = false;
     private int mintarget = 10, maxtarget = 35;
     private Boolean Up = true;
@@ -29,6 +31,8 @@ public class LimboGame extends AppCompatActivity {
         button.setOnClickListener(CreatesetOnclickListener());
         progressBar = findViewById(R.id.progresslimbBar3);
         Qcoins = findViewById(R.id.qcoins3);
+        Qcoins.setText(CustUser.coins + "");
+        crab = findViewById(R.id.crab);
         status = findViewById(R.id.gameStatus3);
 
         Thread myThready = new Thread(new Runnable() {
@@ -49,9 +53,7 @@ public class LimboGame extends AppCompatActivity {
                             }
                         }
                     });
-
                 }
-
             }
         });
         myThready.start();
@@ -79,6 +81,7 @@ public class LimboGame extends AppCompatActivity {
     }
 
     void Restart() {
+        CustUser.coins = Integer. parseInt(Qcoins.getText().toString());
         this.recreate();
     }
 

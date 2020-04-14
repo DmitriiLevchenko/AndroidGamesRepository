@@ -7,7 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 public  class DBHelper extends SQLiteOpenHelper {
-    static String DBName = "formulas3.db";
+    static String DBName = "GameUserDB.db";
     Context context;
     SQLiteDatabase db;
     String path2DB;
