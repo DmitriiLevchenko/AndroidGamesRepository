@@ -1,4 +1,5 @@
 package com.example.rabgame;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,9 +12,10 @@ import android.widget.LinearLayout;
 
 import EvadingLogik.GameViewEvading;
 
-public class EvadingGame  extends AppCompatActivity implements View.OnTouchListener {
+public class EvadingGame extends AppCompatActivity implements View.OnTouchListener {
     static public boolean isLeftPressed = false;
-    static public  boolean isRightPressed = false;
+    static public boolean isRightPressed = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +34,7 @@ public class EvadingGame  extends AppCompatActivity implements View.OnTouchListe
 
     @Override
     public boolean onTouch(View button, MotionEvent motion) {
-        switch(button.getId()) {
+        switch (button.getId()) {
             case R.id.left:
                 switch (motion.getAction()) {
                     case MotionEvent.ACTION_DOWN:
@@ -56,4 +58,6 @@ public class EvadingGame  extends AppCompatActivity implements View.OnTouchListe
         }
         return true;
     }
+
+
 }

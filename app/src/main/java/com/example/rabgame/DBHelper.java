@@ -1,4 +1,5 @@
 package com.example.rabgame;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -6,7 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-public  class DBHelper extends SQLiteOpenHelper {
+
+public class DBHelper extends SQLiteOpenHelper {
     static String DBName = "GameUserDB.db";
     Context context;
     SQLiteDatabase db;
@@ -16,13 +18,13 @@ public  class DBHelper extends SQLiteOpenHelper {
     public DBHelper(Context context) {
         super(context, DBName, null, 1);
         this.context = context;
-        path2DB = "/data/data/"+context.getPackageName()+"/databases/";
-        path = path2DB+DBName;
+        path2DB = "/data/data/" + context.getPackageName() + "/databases/";
+        path = path2DB + DBName;
         openDataBase();
     }
 
     public SQLiteDatabase openDataBase() {
-        if(db == null) {
+        if (db == null) {
             createDataBase();
             db = SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);
         }
@@ -31,12 +33,12 @@ public  class DBHelper extends SQLiteOpenHelper {
 
     public void createDataBase() {
         boolean existDB = checkDataBase();
-        if(!existDB) {
+        if (!existDB) {
             getReadableDatabase();
             try {
                 copyDataBase();
                 return;
-            } catch(IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -49,7 +51,7 @@ public  class DBHelper extends SQLiteOpenHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if(checkDB != null){
+        if (checkDB != null) {
             checkDB.close();
         }
         return checkDB != null;
@@ -60,7 +62,7 @@ public  class DBHelper extends SQLiteOpenHelper {
         FileOutputStream os = new FileOutputStream(path);
         byte[] buffer = new byte[1024];
         int length;
-        while ((length = is.read(buffer))>0){
+        while ((length = is.read(buffer)) > 0) {
             os.write(buffer, 0, length);
         }
 
@@ -72,7 +74,7 @@ public  class DBHelper extends SQLiteOpenHelper {
     }
 
     public void close() {
-        if(db != null) {
+        if (db != null) {
             db.close();
         }
         super.close();

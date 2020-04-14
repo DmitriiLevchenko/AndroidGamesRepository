@@ -2,7 +2,7 @@ package com.example.rabgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -11,14 +11,17 @@ import android.widget.TextView;
 
 public class Shop extends AppCompatActivity {
     private SharedPreferences.Editor ed;
-    private ImageView  crabprice1,crabprice2,crabprice3,crabprice4;
-    private  TextView textView;
+    private ImageView crabprice1, crabprice2, crabprice3, crabprice4;
+    private TextView textView;
+    ImageView back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
 
         crabprice1 = findViewById(R.id.shopprices_1);
+        back = findViewById(R.id.back);
         crabprice2 = findViewById(R.id.shopprices_2);
         crabprice3 = findViewById(R.id.shopprices_3);
         crabprice4 = findViewById(R.id.shopprices_4);
@@ -26,49 +29,52 @@ public class Shop extends AppCompatActivity {
         crabprice2.setOnClickListener(CreatesetOnclickListener());
         crabprice3.setOnClickListener(CreatesetOnclickListener());
         crabprice4.setOnClickListener(CreatesetOnclickListener());
-       textView =  findViewById(R.id.textView2);
-        textView.setText(CustUser.coins + "");
-
+        textView = findViewById(R.id.textView2);
+        textView.setText(CustomizedUser.coins + "");
+        View.OnClickListener OnbackListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreateIntent();
+            }
+        };
+        back.setOnClickListener(OnbackListener);
     }
-    public View.OnClickListener CreatesetOnclickListener()
-    {
+
+    public View.OnClickListener CreatesetOnclickListener() {
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId())
-                {
+                switch (v.getId()) {
                     case R.id.shopprices_1:
-                        if(CustUser.coins >= 100)
-                        {
-                            CustUser.coins-=100;
-                            CustUser.skin = "crab_2";
-                            textView.setText(CustUser.coins + "");
-                        }break;
+                        buyskin(100, "crab_2");
+                        break;
                     case R.id.shopprices_2:
-                        if(CustUser.coins >= 250)
-                        {
-                            CustUser.coins-=250;
-                            CustUser.skin = "crab_3";
-                            textView.setText(CustUser.coins + "");
-                        }break;
+                        buyskin(250, "crab_3");
+                        break;
                     case R.id.shopprices_3:
-                        if(CustUser.coins >= 500)
-                        {
-                            CustUser.coins-=500;
-                            CustUser.skin = "crab_4";
-                            textView.setText(CustUser.coins + "");
-                        }break;
+                        buyskin(500, "crab_4");
+                        break;
                     case R.id.shopprices_4:
-                        if(CustUser.coins >= 1000)
-                        {
-                            CustUser.coins-=1000;
-                            CustUser.skin = "crab_5";
-                            textView.setText(CustUser.coins + "");
-                        }break;
+                        buyskin(1000, "crab_5");
+                        break;
                 }
             }
         };
         return onClickListener;
+    }
+
+    public void CreateIntent() {
+        Intent intent = new Intent(Shop.this, MainActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
+
+    public void buyskin(int cost, String name) {
+        if (CustomizedUser.coins >= cost) {
+            CustomizedUser.coins -= cost;
+            CustomizedUser.skin = name;
+            textView.setText(CustomizedUser.coins + "");
+        }
     }
 
 }

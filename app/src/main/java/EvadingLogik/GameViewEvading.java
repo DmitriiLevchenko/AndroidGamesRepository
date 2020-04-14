@@ -1,6 +1,7 @@
 package EvadingLogik;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -9,6 +10,7 @@ import android.graphics.Paint;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import com.example.rabgame.ChooseTypeOfGame;
 import com.example.rabgame.R;
 
 import java.util.ArrayList;
@@ -20,27 +22,31 @@ public class GameViewEvading extends SurfaceView implements Runnable {
     public static float unitH = 0;
     private boolean firstTime = true;
     private boolean gameRunning = true;
-    private Crab ship;
+    private Crab crab;
     private Thread gameThread = null;
     private Paint paint;
     private Canvas canvas;
+    private Context context;
     private SurfaceHolder surfaceHolder;
-    private ArrayList<Сoconut> asteroids = new ArrayList<>();
-    private final int ASTEROID_INTERVAL = 30;
+    private ArrayList<Сoconut> cocounts = new ArrayList<>();
+    private final int COCOUNT_INTERVAL = 30;
     private int currentTime = 0;
     private Bitmap bitmap;
     private Boolean cheker = false;
+
+
     public GameViewEvading(Context context) {
         super(context);
         //инициализируем обьекты для рисования
         surfaceHolder = getHolder();
         paint = new Paint();
-
+        this.context = context;
 
         // инициализируем поток
         gameThread = new Thread(this);
         gameThread.start();
     }
+
     @Override
     public void run() {
         while (gameRunning) {
@@ -53,9 +59,9 @@ public class GameViewEvading extends SurfaceView implements Runnable {
     }
 
     private void update() {
-        if(!firstTime) {
-            ship.update();
-            for (Сoconut asteroid : asteroids) {
+        if (!firstTime) {
+            crab.update();
+            for (Сoconut asteroid : cocounts) {
                 asteroid.update();
             }
         }
@@ -64,12 +70,12 @@ public class GameViewEvading extends SurfaceView implements Runnable {
     private void draw() {
         if (surfaceHolder.getSurface().isValid()) {
 
-            if(firstTime){
+            if (firstTime) {
                 firstTime = false;
-                unitW = surfaceHolder.getSurfaceFrame().width()/maxX;
-                unitH = surfaceHolder.getSurfaceFrame().height()/maxY;
+                unitW = surfaceHolder.getSurfaceFrame().width() / maxX;
+                unitH = surfaceHolder.getSurfaceFrame().height() / maxY;
 
-                ship = new Crab(getContext());
+                crab = new Crab(getContext());
             }
             canvas = surfaceHolder.lockCanvas();
 
@@ -77,15 +83,14 @@ public class GameViewEvading extends SurfaceView implements Runnable {
 
 
             Bitmap cBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background_hor);
-            if(!cheker)
-            {
+            if (!cheker) {
                 bitmap = Bitmap.createScaledBitmap(
-                        cBitmap, (int)(maxX * GameViewEvading.unitW), (int)(maxY * GameViewEvading.unitH), false);
-                canvas.drawBitmap(bitmap,0,0,null);//фо
+                        cBitmap, (int) (maxX * GameViewEvading.unitW), (int) (maxY * GameViewEvading.unitH), false);
+                canvas.drawBitmap(bitmap, 0, 0, null);//фо
             }
-            ship.drow(paint, canvas);
+            crab.drow(paint, canvas);
 
-            for(Сoconut asteroid: asteroids){
+            for (Сoconut asteroid : cocounts) {
                 asteroid.drow(paint, canvas);
             }
             surfaceHolder.unlockCanvasAndPost(canvas);
@@ -99,23 +104,27 @@ public class GameViewEvading extends SurfaceView implements Runnable {
             e.printStackTrace();
         }
     }
-    private void checkCollision(){
-        for (Сoconut asteroid : asteroids) {
-            if(asteroid.isCollision(ship.x, ship.y, ship.size)){
 
+    private void checkCollision() {
+        for (Сoconut asteroid : cocounts) {
+            if (asteroid.isCollision(crab.x, crab.y, crab.size)) {
                 gameRunning = false;
+                Intent intent = new Intent(context, ChooseTypeOfGame.class);
+                intent.putExtra("game", "EVADE");
+                intent.putExtra("coins", "10");
+                context.startActivity(intent);
 
             }
         }
     }
 
-    private void checkIfNewAsteroid(){
-        if(currentTime >= ASTEROID_INTERVAL){
+    private void checkIfNewAsteroid() {
+        if (currentTime >= COCOUNT_INTERVAL) {
             Сoconut asteroid = new Сoconut(getContext());
-            asteroids.add(asteroid);
+            cocounts.add(asteroid);
             currentTime = 0;
-        }else{
-            currentTime ++;
+        } else {
+            currentTime++;
         }
     }
 }

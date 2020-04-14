@@ -2,7 +2,6 @@ package com.example.rabgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +31,7 @@ public class JumpGame extends AppCompatActivity {
         button.setOnClickListener(CreatesetOnclickListener());
         progressBar = findViewById(R.id.progressjumpBar);
         Qcoins = findViewById(R.id.Qcoins);
-        Qcoins.setText(CustUser.coins + "");
+        Qcoins.setText("0");
         status = findViewById(R.id.gameStatus);
 
         Thread myThready = new Thread(new Runnable()
@@ -59,11 +58,6 @@ public class JumpGame extends AppCompatActivity {
                             }
                         });
 
-                    }
-                    try {
-                        sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
                     }
                      target = 15 + (int) (Math.random() * (progressBar.getMax()-15));
                      mintarget = target-15;
@@ -99,7 +93,7 @@ public class JumpGame extends AppCompatActivity {
     }
     void Restart()
     {
-        CustUser.coins = Integer. parseInt(Qcoins.getText().toString());
+        CustomizedUser.coins += Integer. parseInt(Qcoins.getText().toString());
         this.recreate();
     }
     void Jump()
@@ -151,7 +145,7 @@ public class JumpGame extends AppCompatActivity {
     }
     void chooseskin()
     {
-        switch (CustUser.skin)
+        switch (CustomizedUser.skin)
         {
             case "crab_1":
                 crab.setImageResource(R.drawable.crab_1);break;

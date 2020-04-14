@@ -2,14 +2,13 @@ package EvadingLogik;
 
 import android.content.Context;
 
-import com.example.rabgame.CustUser;
+import com.example.rabgame.CustomizedUser;
 import com.example.rabgame.EvadingGame;
-import com.example.rabgame.MainActivity;
 import com.example.rabgame.R;
 
 public class Crab extends JungleBody {
     public Crab(Context context) {
-        switch (CustUser.skin)
+        switch (CustomizedUser.skin)
         {
             case "crab_1":
                 bitmapId = (R.drawable.crab_1);break;
@@ -22,10 +21,10 @@ public class Crab extends JungleBody {
             case "crab_5":
                 bitmapId = (R.drawable.crab_5);break;
         }
-        size = 4;
+        size = 6;
         x=5;
         y= GameViewEvading.maxY - size - 1;
-        speed = (float) 1.2;
+        speed = (float) 2;
 
         init(context); // инициализируем корабль
     }

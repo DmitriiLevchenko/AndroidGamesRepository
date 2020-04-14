@@ -2,7 +2,6 @@ package com.example.rabgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,7 +33,7 @@ public class LimboGame extends AppCompatActivity {
         button.setOnClickListener(CreatesetOnclickListener());
         progressBar = findViewById(R.id.progresslimbBar3);
         Qcoins = findViewById(R.id.qcoins3);
-        Qcoins.setText(CustUser.coins + "");
+        Qcoins.setText("0");
         status = findViewById(R.id.gameStatus3);
 
 
@@ -84,7 +83,7 @@ public class LimboGame extends AppCompatActivity {
     }
 
     void Restart() {
-        CustUser.coins = Integer. parseInt(Qcoins.getText().toString());
+        CustomizedUser.coins += Integer. parseInt(Qcoins.getText().toString());
         this.recreate();
     }
 
@@ -92,14 +91,13 @@ public class LimboGame extends AppCompatActivity {
         if (progressBar.getProgress() < maxtarget && progressBar.getProgress() > mintarget) {
             Integer coins = Integer.parseInt(Qcoins.getText().toString()) + 1;
             Qcoins.setText(coins.toString());
-            Jump = true;
         } else {
             button.setText("Restart");
-            Jump = true;
             GameOver = true;
             status.setText("Game over");
-            status.setVisibility((int) 0.9);
+            status.setVisibility((int) 1);
         }
+        Jump = true;
     }
 
     void SetprogressBar(ProgressBar progressBar) {
@@ -126,7 +124,7 @@ public class LimboGame extends AppCompatActivity {
     }
     void chooseskin()
     {
-        switch (CustUser.skin)
+        switch (CustomizedUser.skin)
         {
             case "crab_1":
                 crab.setImageResource(R.drawable.crab_1);break;

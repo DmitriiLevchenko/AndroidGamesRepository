@@ -1,6 +1,6 @@
 package com.example.rabgame;
 
-public class CustUser {
+public class CustomizedUser {
     static public int coins;
     static public String skin;
 }

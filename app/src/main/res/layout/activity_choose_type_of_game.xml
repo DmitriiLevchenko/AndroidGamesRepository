@@ -8,22 +8,30 @@
     android:background="@drawable/background_hor">
 
     <ImageView
+        android:id="@+id/back2"
+        android:layout_width="87dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/back_50" />
+
+    <ImageView
         android:id="@+id/jump"
         android:layout_width="138dp"
         android:layout_height="166dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/games_1" />
 
     <ImageView
         android:id="@+id/evade"
-        android:layout_width="199dp"
-        android:layout_height="179dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
+        android:layout_width="190dp"
+        android:layout_height="169dp"
+        android:layout_marginStart="272dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/games_2" />
@@ -32,10 +40,8 @@
         android:id="@+id/limbo"
         android:layout_width="139dp"
         android:layout_height="177dp"
-        android:layout_marginStart="480dp"
-        android:layout_marginTop="56dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.017"
+        android:layout_marginStart="464dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/games_3" />
@@ -59,6 +65,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:srcCompat="@drawable/crab_1" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="390dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="184dp"
+        android:layout_marginBottom="132dp"
+        android:visibility="invisible"
+        android:textStyle="bold"
+        android:text="TextView"
+        android:textSize="21dp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
