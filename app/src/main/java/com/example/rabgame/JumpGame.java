@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -19,11 +20,14 @@ public class JumpGame extends AppCompatActivity {
     private Boolean GameOver = false;
     private int target = 50,mintarget = 35,maxtarget = 65;
     private Boolean Up = true;
+    ImageView crab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jump_game);
 
+        crab = findViewById(R.id.crab);
+        chooseskin();
         button = (Button)findViewById(R.id.jumpButton);
         button.setOnClickListener(CreatesetOnclickListener());
         progressBar = findViewById(R.id.progressjumpBar);
@@ -144,5 +148,23 @@ public class JumpGame extends AppCompatActivity {
 
             progressBar.setProgressDrawable(getResources().getDrawable(R.drawable.verticalprogressbar));
         }
+    }
+    void chooseskin()
+    {
+        switch (CustUser.skin)
+        {
+            case "crab_1":
+                crab.setImageResource(R.drawable.crab_1);break;
+            case "crab_2":
+                crab.setImageResource(R.drawable.crab_2);break;
+            case "crab_3":
+                crab.setImageResource(R.drawable.crab_3);break;
+            case "crab_4":
+                crab.setImageResource(R.drawable.crab_4);break;
+            case "crab_5":
+                crab.setImageResource(R.drawable.crab_5);break;
+        }
+
+
     }
 }

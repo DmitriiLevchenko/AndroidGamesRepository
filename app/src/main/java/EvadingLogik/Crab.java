@@ -2,13 +2,26 @@ package EvadingLogik;
 
 import android.content.Context;
 
+import com.example.rabgame.CustUser;
 import com.example.rabgame.EvadingGame;
 import com.example.rabgame.MainActivity;
 import com.example.rabgame.R;
 
 public class Crab extends JungleBody {
     public Crab(Context context) {
-        bitmapId = R.drawable.crab_1; // определяем начальные параметры
+        switch (CustUser.skin)
+        {
+            case "crab_1":
+                bitmapId = (R.drawable.crab_1);break;
+            case "crab_2":
+                bitmapId = (R.drawable.crab_2);break;
+            case "crab_3":
+                bitmapId = (R.drawable.crab_3);break;
+            case "crab_4":
+                bitmapId = (R.drawable.crab_4);break;
+            case "crab_5":
+                bitmapId = (R.drawable.crab_5);break;
+        }
         size = 4;
         x=5;
         y= GameViewEvading.maxY - size - 1;

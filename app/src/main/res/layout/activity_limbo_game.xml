@@ -23,8 +23,8 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="253dp"
+        android:id="@+id/crab2"
+        android:layout_width="212dp"
         android:layout_height="73dp"
         android:layout_marginStart="56dp"
         android:layout_marginBottom="16dp"
@@ -59,7 +59,7 @@
         android:id="@+id/qcoins3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="468dp"
+        android:layout_marginStart="452dp"
         android:layout_marginBottom="288dp"
         android:text="0"
         android:textSize="36dp"
@@ -81,9 +81,9 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView13"
-        android:layout_width="363dp"
-        android:layout_height="242dp"
+        android:id="@+id/imageView21"
+        android:layout_width="449dp"
+        android:layout_height="273dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/limbo" />
@@ -92,7 +92,7 @@
         android:id="@+id/imageView14"
         android:layout_width="89dp"
         android:layout_height="154dp"
-        android:layout_marginStart="496dp"
+        android:layout_marginStart="516dp"
         android:layout_marginBottom="236dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -27,13 +27,16 @@ public class LimboGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_limbo_game);
 
+
+        crab = findViewById(R.id.crab2);
+        chooseskin();
         button = (Button) findViewById(R.id.limb);
         button.setOnClickListener(CreatesetOnclickListener());
         progressBar = findViewById(R.id.progresslimbBar3);
         Qcoins = findViewById(R.id.qcoins3);
         Qcoins.setText(CustUser.coins + "");
-        crab = findViewById(R.id.crab);
         status = findViewById(R.id.gameStatus3);
+
 
         Thread myThready = new Thread(new Runnable() {
             public void run() {
@@ -120,5 +123,23 @@ public class LimboGame extends AppCompatActivity {
 
             progressBar.setProgressDrawable(getResources().getDrawable(R.drawable.verticalprogressbar));
         }
+    }
+    void chooseskin()
+    {
+        switch (CustUser.skin)
+        {
+            case "crab_1":
+                crab.setImageResource(R.drawable.crab_1);break;
+            case "crab_2":
+                crab.setImageResource(R.drawable.crab_2);break;
+            case "crab_3":
+                crab.setImageResource(R.drawable.crab_3);break;
+            case "crab_4":
+                crab.setImageResource(R.drawable.crab_4);break;
+            case "crab_5":
+                crab.setImageResource(R.drawable.crab_5);break;
+        }
+
+
     }
 }

@@ -80,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         ContentValues cv = new ContentValues();
-        cv.put("coins", CustUser.coins);
-        cv.put("activeskin", CustUser.skin+"");
+        cv.put("coins",CustUser.coins);
+        cv.put("activeskin",CustUser.skin);
         final SQLiteDatabase db2 = new DBHelper(this).getWritableDatabase();
         int cursor = db2.update("GameUser", cv, null,
                 null);
