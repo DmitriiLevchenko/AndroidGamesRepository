@@ -89,7 +89,7 @@ public class LimboGame extends AppCompatActivity {
 
     void Jump() {
         if (progressBar.getProgress() < maxtarget && progressBar.getProgress() > mintarget) {
-            Integer coins = Integer.parseInt(Qcoins.getText().toString()) + 1;
+            Integer coins = Integer.parseInt(Qcoins.getText().toString()) + 2;
             Qcoins.setText(coins.toString());
         } else {
             button.setText("Restart");

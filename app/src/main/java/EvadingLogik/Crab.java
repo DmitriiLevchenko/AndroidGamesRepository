@@ -21,7 +21,7 @@ public class Crab extends JungleBody {
             case "crab_5":
                 bitmapId = (R.drawable.crab_5);break;
         }
-        size = 6;
+        size = 4;
         x=5;
         y= GameViewEvading.maxY - size - 1;
         speed = (float) 2;

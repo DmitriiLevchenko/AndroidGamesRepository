@@ -9,15 +9,18 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.rabgame.ChooseTypeOfGame;
 import com.example.rabgame.R;
 
 import java.util.ArrayList;
+import java.util.logging.Handler;
 
 public class GameViewEvading extends SurfaceView implements Runnable {
     public static int maxX = 32;
-    public static int maxY = 24;
+    public static int maxY = 20;
     public static float unitW = 0;
     public static float unitH = 0;
     private boolean firstTime = true;
@@ -29,10 +32,11 @@ public class GameViewEvading extends SurfaceView implements Runnable {
     private Context context;
     private SurfaceHolder surfaceHolder;
     private ArrayList<Сoconut> cocounts = new ArrayList<>();
-    private final int COCOUNT_INTERVAL = 17;
+    private  int COCOUNT_INTERVAL = 15;
     private int currentTime = 0;
     private Bitmap bitmap;
     private Boolean cheker = false;
+    Handler h;
 
 
     public GameViewEvading(Context context) {
@@ -41,7 +45,6 @@ public class GameViewEvading extends SurfaceView implements Runnable {
         surfaceHolder = getHolder();
         paint = new Paint();
         this.context = context;
-
         // инициализируем поток
         gameThread = new Thread(this);
         gameThread.start();
@@ -69,23 +72,18 @@ public class GameViewEvading extends SurfaceView implements Runnable {
 
     private void draw() {
         if (surfaceHolder.getSurface().isValid()) {
-
             if (firstTime) {
                 firstTime = false;
                 unitW = surfaceHolder.getSurfaceFrame().width() / maxX;
                 unitH = surfaceHolder.getSurfaceFrame().height() / maxY;
-
                 crab = new Crab(getContext());
             }
             canvas = surfaceHolder.lockCanvas();
 
-            canvas.drawColor(Color.WHITE);
-
-
             Bitmap cBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background_hor);
             if (!cheker) {
                 bitmap = Bitmap.createScaledBitmap(
-                        cBitmap, (int) (maxX * GameViewEvading.unitW), (int) (maxY * GameViewEvading.unitH), false);
+                        cBitmap, surfaceHolder.getSurfaceFrame().width(), surfaceHolder.getSurfaceFrame().height(), false);
                 canvas.drawBitmap(bitmap, 0, 0, null);//фо
             }
             crab.drow(paint, canvas);
@@ -99,15 +97,15 @@ public class GameViewEvading extends SurfaceView implements Runnable {
 
     private void control() {
         try {
-            gameThread.sleep(3);
+            gameThread.sleep(8);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     private void checkCollision() {
-        for (Сoconut asteroid : cocounts) {
-            if (asteroid.isCollision(crab.x, crab.y, crab.size)) {
+        for (Сoconut сoconut : cocounts) {
+            if (сoconut.isCollision(crab.x, crab.y, crab.size)) {
                 gameRunning = false;
                 Intent intent = new Intent(context, ChooseTypeOfGame.class);
                 intent.putExtra("game", "EVADE");
@@ -115,14 +113,21 @@ public class GameViewEvading extends SurfaceView implements Runnable {
                 context.startActivity(intent);
 
             }
+            if(сoconut.isEnd(surfaceHolder.getSurfaceFrame().height(),unitH))
+            {
+                cocounts.remove(сoconut);
+
+
+            }
         }
     }
 
     private void checkIfNewAsteroid() {
-        if (currentTime >= COCOUNT_INTERVAL) {
+        if (currentTime >= COCOUNT_INTERVAL)
+        {
             Сoconut asteroid = new Сoconut(getContext());
             cocounts.add(asteroid);
-            currentTime = 0;
+            currentTime = 5;
         } else {
             currentTime++;
         }

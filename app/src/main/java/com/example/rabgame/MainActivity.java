@@ -7,12 +7,15 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+    public static String LOGNAME = "GameLog";
     private Button start, shop, rule, exit;
     private final String TABLENAME = "GameUser";
+    private  DBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         shop.setOnClickListener(CreatesetOnclickListener());
         rule.setOnClickListener(CreatesetOnclickListener());
         exit.setOnClickListener(CreatesetOnclickListener());
+        dbHelper = new DBHelper(this);
         getDatefromDB();
 
 
@@ -57,15 +61,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void getDatefromDB()
     {
-        final SQLiteDatabase db = new DBHelper(this).getWritableDatabase();
-        Cursor cursor = db.query(TABLENAME, null, null, null,
-                null, null, null);
-        if (cursor != null && cursor.moveToFirst()) {
-            cursor.moveToFirst();
-            CustomizedUser.skin = cursor.getString(cursor.getColumnIndex("activeskin"));
-            CustomizedUser.coins = cursor.getInt(cursor.getColumnIndex("coins"));
+        if(CustomizedUser.skin == "nule" && CustomizedUser.coins == -1)
+        {
+            final SQLiteDatabase db = dbHelper.getWritableDatabase();
+            Cursor cursor = db.query(TABLENAME, null, null, null, null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                cursor.moveToFirst();
+                CustomizedUser.skin = cursor.getString(cursor.getColumnIndex("activeskin"));
+                CustomizedUser.coins = cursor.getInt(cursor.getColumnIndex("coins"));
+                Log.d(MainActivity.LOGNAME, String.valueOf(cursor.getString(cursor.getColumnIndex("activeskin"))+cursor.getInt(cursor.getColumnIndex("coins"))));
+            }
+            else
+            {
+                Log.d(MainActivity.LOGNAME, String.valueOf("Create db"));
+                ContentValues cv = new ContentValues();
+                cv.put("coins", 0);
+                cv.put("activeskin", "crab_1");
+                long rowID = db.insert("mytable", null, cv);
+                getDatefromDB();
+            }
         }
-        db.close();
     }
     void CreateStartIntent() {
         Intent intent = new Intent(MainActivity.this, ChooseTypeOfGame.class);
@@ -98,9 +113,9 @@ public class MainActivity extends AppCompatActivity {
         ContentValues cv = new ContentValues();
         cv.put("coins", CustomizedUser.coins);
         cv.put("activeskin", CustomizedUser.skin);
-        final SQLiteDatabase db2 = new DBHelper(this).getWritableDatabase();
-        int cursor = db2.update(TABLENAME, cv, null,
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        int cursor = db.update(TABLENAME, cv, null,
                 null);
-        db2.close();
+
     }
 }

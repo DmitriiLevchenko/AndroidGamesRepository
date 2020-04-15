@@ -3,6 +3,7 @@ package com.example.rabgame;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -94,13 +95,14 @@ public class JumpGame extends AppCompatActivity {
     void Restart()
     {
         CustomizedUser.coins += Integer. parseInt(Qcoins.getText().toString());
+        Log.d(MainActivity.LOGNAME, String.valueOf(CustomizedUser.coins));
         this.recreate();
     }
     void Jump()
     {
         if(progressBar.getProgress() < maxtarget && progressBar.getProgress() > mintarget)
         {
-            Integer coins = Integer. parseInt(Qcoins.getText().toString())+1;
+            Integer coins = Integer. parseInt(Qcoins.getText().toString())+2;
             Qcoins.setText(coins.toString());
             Jump = true;
         }
