@@ -7,31 +7,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="151dp"
-        android:layout_weight="100"
-        android:background="@drawable/rules">
-
-        <ImageView
-            android:id="@+id/moneyimage"
-            android:layout_width="62dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="false"
-            android:layout_alignParentRight="true"
-            app:srcCompat="@drawable/moneycount" />
-
-        <TextView
-            android:id="@+id/count"
-            android:layout_width="76dp"
-            android:layout_height="match_parent"
-            android:layout_toLeftOf="@+id/moneyimage"
-            android:gravity="center"
-            android:text="0"
-            android:textSize="26dp"
-            android:textStyle="bold" />
-    </RelativeLayout>
-
     <LinearLayout
         android:id="@+id/gameLayout"
         android:layout_width="match_parent"

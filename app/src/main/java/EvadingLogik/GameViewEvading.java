@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.rabgame.ChooseTypeOfGame;
+import com.example.rabgame.CustomizedUser;
 import com.example.rabgame.R;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class GameViewEvading extends SurfaceView implements Runnable {
     private Context context;
     private SurfaceHolder surfaceHolder;
     private ArrayList<Сoconut> cocounts = new ArrayList<>();
-    private  int COCOUNT_INTERVAL = 15;
+    private  int COCOUNT_INTERVAL = 12;
     private int currentTime = 0;
     private Bitmap bitmap;
     private Boolean cheker = false;
@@ -55,9 +56,9 @@ public class GameViewEvading extends SurfaceView implements Runnable {
         while (gameRunning) {
             update();
             draw();
-            checkCollision();
             checkIfNewAsteroid();
             control();
+            checkCollision();
         }
     }
 
@@ -104,6 +105,7 @@ public class GameViewEvading extends SurfaceView implements Runnable {
     }
 
     private void checkCollision() {
+        ArrayList<Сoconut> arrayList = new ArrayList<>();
         for (Сoconut сoconut : cocounts) {
             if (сoconut.isCollision(crab.x, crab.y, crab.size)) {
                 gameRunning = false;
@@ -111,14 +113,18 @@ public class GameViewEvading extends SurfaceView implements Runnable {
                 intent.putExtra("game", "EVADE");
                 intent.putExtra("coins", "10");
                 context.startActivity(intent);
+                
 
             }
             if(сoconut.isEnd(surfaceHolder.getSurfaceFrame().height(),unitH))
             {
-                cocounts.remove(сoconut);
-
-
+                arrayList.add(сoconut);
+                CustomizedUser.coins += 1;
             }
+        }
+        for(int i = 0;i< arrayList.size();i++)
+        {
+            cocounts.remove(arrayList.get(i));
         }
     }
 

@@ -2,6 +2,7 @@ package com.example.rabgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +21,7 @@ public class JumpGame extends AppCompatActivity {
     private Boolean GameOver = false;
     private int target = 50,mintarget = 35,maxtarget = 65;
     private Boolean Up = true;
-    ImageView crab;
+    ImageView crab,back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,8 @@ public class JumpGame extends AppCompatActivity {
 
         crab = findViewById(R.id.crab);
         chooseskin();
+        back = findViewById(R.id.back4);
+        back.setOnClickListener(CreatesetOnclickListener());
         button = (Button)findViewById(R.id.jumpButton);
         button.setOnClickListener(CreatesetOnclickListener());
         progressBar = findViewById(R.id.progressjumpBar);
@@ -44,7 +47,7 @@ public class JumpGame extends AppCompatActivity {
                     while(Jump == false)
                     {
                         try {
-                            sleep(10);
+                            sleep(8);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -86,7 +89,10 @@ public class JumpGame extends AppCompatActivity {
                         {
 
                             Restart();
-                        }
+                        }break;
+                    case R.id.back4:
+                        BackIntent();break;
+
                 }
             }
         };
@@ -162,5 +168,11 @@ public class JumpGame extends AppCompatActivity {
         }
 
 
+    }
+    void BackIntent()
+    {
+        Intent intent = new Intent(JumpGame.this,ChooseTypeOfGame.class);
+        startActivity(intent);
+        this.finish();
     }
 }

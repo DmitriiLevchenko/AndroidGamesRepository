@@ -2,6 +2,7 @@ package com.example.rabgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +17,7 @@ public class LimboGame extends AppCompatActivity {
     private TextView Qcoins, status;
     private Boolean Jump = false;
     private Button button;
-    ImageView crab;
+    ImageView crab,back;
     private Boolean GameOver = false;
     private int mintarget = 10, maxtarget = 35;
     private Boolean Up = true;
@@ -26,7 +27,8 @@ public class LimboGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_limbo_game);
 
-
+        back = findViewById(R.id.back5);
+        back.setOnClickListener(CreatesetOnclickListener());
         crab = findViewById(R.id.crab2);
         chooseskin();
         button = (Button) findViewById(R.id.limb);
@@ -73,7 +75,9 @@ public class LimboGame extends AppCompatActivity {
                         } else {
 
                             Restart();
-                        }
+                        }break;
+                    case R.id.back5:
+                        BackIntent();break;
 
 
                 }
@@ -136,8 +140,15 @@ public class LimboGame extends AppCompatActivity {
                 crab.setImageResource(R.drawable.crab_4);break;
             case "crab_5":
                 crab.setImageResource(R.drawable.crab_5);break;
+
         }
 
 
+    }
+    void BackIntent()
+    {
+        Intent intent = new Intent(LimboGame.this,ChooseTypeOfGame.class);
+        startActivity(intent);
+        this.finish();
     }
 }

@@ -89,6 +89,14 @@
         app:srcCompat="@drawable/limbo" />
 
     <ImageView
+        android:id="@+id/back5"
+        android:layout_width="87dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/back_50" />
+
+    <ImageView
         android:id="@+id/imageView14"
         android:layout_width="89dp"
         android:layout_height="154dp"

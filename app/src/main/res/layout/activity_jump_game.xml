@@ -7,6 +7,15 @@
     tools:context=".JumpGame"
     android:background="@drawable/background_hor">
 
+    <ImageView
+        android:id="@+id/back4"
+        android:layout_width="87dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/back_50" />
+
     <ProgressBar
         android:id="@+id/progressjumpBar"
         style="?android:attr/progressBarStyleHorizontal"
@@ -26,7 +35,7 @@
         android:id="@+id/crab"
         android:layout_width="253dp"
         android:layout_height="73dp"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="80dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,8 +72,8 @@
         android:id="@+id/imageView8"
         android:layout_width="170dp"
         android:layout_height="194dp"
-        android:layout_marginStart="432dp"
-        android:layout_marginBottom="216dp"
+        android:layout_marginStart="428dp"
+        android:layout_marginBottom="212dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/moneycount_box" />

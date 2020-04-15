@@ -11,7 +11,7 @@ import java.io.InputStream;
 class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(Context context) {
-        super(context, "GameUser", null, 1);
+        super(context, "GameUser.db", null, 1);
     }
 
     @Override

@@ -3,6 +3,8 @@ package com.example.rabgame;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
@@ -23,16 +25,6 @@ public class EvadingGame extends AppCompatActivity implements View.OnTouchListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evading_game);
-
-        android.os.Handler h = new android.os.Handler() {
-            public void handleMessage(android.os.Message msg) {
-                coinsQn = findViewById(R.id.count);
-                int count = Integer.parseInt(coinsQn.getText().toString())+1;
-                coinsQn.setText(count+"");
-            };
-        };
-
-
         GameViewEvading gameView = new GameViewEvading(this);
 
         LinearLayout gameLayout = (LinearLayout) findViewById(R.id.gameLayout);
@@ -70,6 +62,5 @@ public class EvadingGame extends AppCompatActivity implements View.OnTouchListen
         }
         return true;
     }
-
 
 }
