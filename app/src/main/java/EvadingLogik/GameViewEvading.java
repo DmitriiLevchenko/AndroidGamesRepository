@@ -29,7 +29,7 @@ public class GameViewEvading extends SurfaceView implements Runnable {
     private Context context;
     private SurfaceHolder surfaceHolder;
     private ArrayList<Сoconut> cocounts = new ArrayList<>();
-    private final int COCOUNT_INTERVAL = 30;
+    private final int COCOUNT_INTERVAL = 17;
     private int currentTime = 0;
     private Bitmap bitmap;
     private Boolean cheker = false;

@@ -12,7 +12,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private Button start, shop, rule, exit;
-
+    private final String TABLENAME = "GameUser";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.exit:
                         CreateExitIntent();
                         break;
+                    case R.id.rule:
+                        CreateRuleIntent();
+                        break;
                 }
             }
         };
@@ -55,17 +58,19 @@ public class MainActivity extends AppCompatActivity {
     public void getDatefromDB()
     {
         final SQLiteDatabase db = new DBHelper(this).getWritableDatabase();
-        Cursor cursor = db.query("GameUser", null, null, null,
+        Cursor cursor = db.query(TABLENAME, null, null, null,
                 null, null, null);
         if (cursor != null && cursor.moveToFirst()) {
             cursor.moveToFirst();
             CustomizedUser.skin = cursor.getString(cursor.getColumnIndex("activeskin"));
             CustomizedUser.coins = cursor.getInt(cursor.getColumnIndex("coins"));
         }
+        db.close();
     }
     void CreateStartIntent() {
         Intent intent = new Intent(MainActivity.this, ChooseTypeOfGame.class);
         startActivity(intent);
+        this.finish();
 
     }
 
@@ -76,8 +81,16 @@ public class MainActivity extends AppCompatActivity {
     void CreateShopIntent() {
         Intent intent = new Intent(MainActivity.this, Shop.class);
         startActivity(intent);
+        this.finish();
 
     }
+    void CreateRuleIntent() {
+        Intent intent = new Intent(MainActivity.this, Rules.class);
+        startActivity(intent);
+        this.finish();
+
+    }
+
 
     @Override
     protected void onDestroy() {
@@ -86,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         cv.put("coins", CustomizedUser.coins);
         cv.put("activeskin", CustomizedUser.skin);
         final SQLiteDatabase db2 = new DBHelper(this).getWritableDatabase();
-        int cursor = db2.update("GameUser", cv, null,
+        int cursor = db2.update(TABLENAME, cv, null,
                 null);
         db2.close();
     }
