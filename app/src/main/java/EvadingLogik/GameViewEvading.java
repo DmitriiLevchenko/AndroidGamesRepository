@@ -14,12 +14,12 @@ import android.widget.TextView;
 
 import com.example.rabgame.ChooseTypeOfGame;
 import com.example.rabgame.CustomizedUser;
+import com.example.rabgame.IGameViewEvading;
 import com.example.rabgame.R;
 
 import java.util.ArrayList;
 import java.util.logging.Handler;
-
-public class GameViewEvading extends SurfaceView implements Runnable {
+public class GameViewEvading extends SurfaceView implements Runnable{
     public static int maxX = 32;
     public static int maxY = 20;
     public static float unitW = 0;
@@ -37,15 +37,17 @@ public class GameViewEvading extends SurfaceView implements Runnable {
     private int currentTime = 0;
     private Bitmap bitmap;
     private Boolean cheker = false;
+    IGameViewEvading iGameViewEvading;
     Handler h;
 
 
-    public GameViewEvading(Context context) {
+    public GameViewEvading(Context context, IGameViewEvading iGameViewEvading) {
         super(context);
         //инициализируем обьекты для рисования
         surfaceHolder = getHolder();
         paint = new Paint();
         this.context = context;
+        iGameViewEvading = iGameViewEvading;
         // инициализируем поток
         gameThread = new Thread(this);
         gameThread.start();
@@ -104,15 +106,13 @@ public class GameViewEvading extends SurfaceView implements Runnable {
         }
     }
 
-    private void checkCollision() {
+    public void checkCollision() {
         ArrayList<Сoconut> arrayList = new ArrayList<>();
         for (Сoconut сoconut : cocounts) {
             if (сoconut.isCollision(crab.x, crab.y, crab.size)) {
                 gameRunning = false;
-                Intent intent = new Intent(context, ChooseTypeOfGame.class);
-                intent.putExtra("game", "EVADE");
-                intent.putExtra("coins", "10");
-                context.startActivity(intent);
+                iGameViewEvading.checkCollision();
+
             }
             if(сoconut.isEnd(surfaceHolder.getSurfaceFrame().height(),unitH))
             {
