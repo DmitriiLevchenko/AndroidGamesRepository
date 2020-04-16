@@ -27,7 +27,7 @@ public class EvadingGame extends AppCompatActivity implements View.OnTouchListen
         setContentView(R.layout.activity_evading_game);
         GameViewEvading gameView = new GameViewEvading(this);
 
-        LinearLayout gameLayout = (LinearLayout) findViewById(R.id.gameLayout);
+        LinearLayout gameLayout = findViewById(R.id.gameLayout);
         gameLayout.addView(gameView); // и добавляем в него gameView
 
         ImageView leftButton = (ImageView) findViewById(R.id.left);

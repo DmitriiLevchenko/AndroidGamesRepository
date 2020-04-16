@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         myEditor = myPreferences.edit();
         if(CustomizedUser.skin == "null" && CustomizedUser.coins == -1)
         {
-            CustomizedUser.coins = myPreferences.getInt("coins", 1000);
+            CustomizedUser.coins = myPreferences.getInt("coins", 0);
             CustomizedUser.skin = myPreferences.getString("skin", "crab_1");
             //getDatefromSharedPreferences();
             Log.d(MainActivity.LOGNAME, String.valueOf(CustomizedUser.coins) + CustomizedUser.skin);

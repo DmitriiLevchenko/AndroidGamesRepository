@@ -113,8 +113,6 @@ public class GameViewEvading extends SurfaceView implements Runnable {
                 intent.putExtra("game", "EVADE");
                 intent.putExtra("coins", "10");
                 context.startActivity(intent);
-                
-
             }
             if(сoconut.isEnd(surfaceHolder.getSurfaceFrame().height(),unitH))
             {
