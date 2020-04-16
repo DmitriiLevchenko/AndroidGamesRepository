@@ -17,30 +17,23 @@ import android.widget.TextView;
 
 import EvadingLogik.GameViewEvading;
 
-public class EvadingGame extends AppCompatActivity implements View.OnTouchListener {
+public class EvadingGame extends AppCompatActivity implements View.OnTouchListener,IGameViewEvading {
     static public boolean isLeftPressed = false;
     static public boolean isRightPressed = false;
     public ImageView back;
 
 
+    @Override
+    public void checkCollision() {
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evading_game);
 
-
-
-        IGameViewEvading iGameViewEvading = new IGameViewEvading() {
-
-            @Override
-            public void checkCollision() {
-                Intent intent = new Intent(EvadingGame.this, ChooseTypeOfGame.class);
-                startActivity(intent);
-                this.finish();
-            }
-        };
-        GameViewEvading gameView = new GameViewEvading(this,iGameViewEvading);
+        GameViewEvading gameView = new GameViewEvading(this,this);
         LinearLayout gameLayout = findViewById(R.id.gameLayout);
         gameLayout.addView(gameView); // и добавляем в него gameView
         back = findViewById(R.id.backevad);
@@ -92,8 +85,6 @@ public class EvadingGame extends AppCompatActivity implements View.OnTouchListen
     }
     public void CreateIntentBack()
     {
-        Intent intent = new Intent(EvadingGame.this, ChooseTypeOfGame.class);
-        startActivity(intent);
         this.finish();
     }
 

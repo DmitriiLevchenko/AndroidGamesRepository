@@ -65,28 +65,22 @@ public class ChooseTypeOfGame extends AppCompatActivity {
     void CreateEvadeIntent() {
         Intent intent = new Intent(ChooseTypeOfGame.this, EvadingGame.class);
         startActivity(intent);
-        this.finish();
-
     }
 
     void CreateJumpIntent() {
         Intent intent = new Intent(ChooseTypeOfGame.this, JumpGame.class);
         startActivity(intent);
-        this.finish();
-
     }
 
     void CreateLimboIntent() {
         Intent intent = new Intent(ChooseTypeOfGame.this, LimboGame.class);
         startActivity(intent);
-        this.finish();
-
     }
 
     void CreatebackIntent() {
         Intent intent = new Intent(ChooseTypeOfGame.this, MainActivity.class);
         startActivity(intent);
-        this.finish();
+        finish();
 
     }
 }

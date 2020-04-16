@@ -147,8 +147,6 @@ public class LimboGame extends AppCompatActivity {
     }
     void BackIntent()
     {
-        Intent intent = new Intent(LimboGame.this,ChooseTypeOfGame.class);
-        startActivity(intent);
         this.finish();
     }
 }

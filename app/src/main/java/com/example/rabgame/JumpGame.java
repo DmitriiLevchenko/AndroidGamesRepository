@@ -171,8 +171,6 @@ public class JumpGame extends AppCompatActivity {
     }
     void BackIntent()
     {
-        Intent intent = new Intent(JumpGame.this,ChooseTypeOfGame.class);
-        startActivity(intent);
         this.finish();
     }
 }

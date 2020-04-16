@@ -14,12 +14,13 @@ import android.widget.TextView;
 
 import com.example.rabgame.ChooseTypeOfGame;
 import com.example.rabgame.CustomizedUser;
+import com.example.rabgame.EvadingGame;
 import com.example.rabgame.IGameViewEvading;
 import com.example.rabgame.R;
 
 import java.util.ArrayList;
 import java.util.logging.Handler;
-public class GameViewEvading extends SurfaceView implements Runnable{
+public class GameViewEvading extends SurfaceView implements Runnable,IGameViewEvading{
     public static int maxX = 32;
     public static int maxY = 20;
     public static float unitW = 0;
@@ -47,7 +48,7 @@ public class GameViewEvading extends SurfaceView implements Runnable{
         surfaceHolder = getHolder();
         paint = new Paint();
         this.context = context;
-        iGameViewEvading = iGameViewEvading;
+        this.iGameViewEvading = iGameViewEvading;
         // инициализируем поток
         gameThread = new Thread(this);
         gameThread.start();
@@ -100,7 +101,7 @@ public class GameViewEvading extends SurfaceView implements Runnable{
 
     private void control() {
         try {
-            gameThread.sleep(8);
+            gameThread.sleep(15);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
